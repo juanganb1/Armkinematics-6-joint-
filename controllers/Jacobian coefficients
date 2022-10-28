@@ -1,0 +1,86 @@
+import numpy as np
+from sympy import *
+import math
+
+np.set_printoptions(suppress=True)
+
+# Matriz homogenea
+theta1 = Symbol("theta1")
+theta2 = Symbol("theta2")
+theta3 = Symbol("theta3")
+theta4 = Symbol("theta4")
+theta5 = Symbol("theta5")
+theta6 = Symbol("theta6")
+
+l1 = Symbol("l1")
+l2 = Symbol("l2")
+l3 = Symbol("l3")
+l4 = Symbol("l4")
+l5 = Symbol("l5")
+l6 = Symbol("l6")
+
+T1 = Matrix([   [cos(theta1), -sin(theta1), l1*cos(theta1)], \
+                [sin(theta1), cos(theta1), l1*sin(theta1)], \
+                [0, 0, 1]
+            ])
+
+T2 = Matrix([   [cos(theta2), -sin(theta2), l2*cos(theta2)], \
+                [sin(theta2), cos(theta2), l2*sin(theta2)], \
+                [0, 0, 1]
+            ])
+
+T3 = Matrix([   [cos(theta3), -sin(theta3), l3*cos(theta3)], \
+                [sin(theta3), cos(theta3), l3*sin(theta3)], \
+                [0, 0, 1]
+            ])
+T4 = Matrix([   [cos(theta4), -sin(theta4), l4*cos(theta4)], \
+                [sin(theta4), cos(theta4), l4*sin(theta4)], \
+                [0, 0, 1]
+            ])
+
+
+T5 = Matrix([   [cos(theta5), -sin(theta5), l5*cos(theta5)], \
+                [sin(theta5), cos(theta5), l5*sin(theta5)], \
+                [0, 0, 1]
+            ])
+
+T6 = Matrix([   [cos(theta6), -sin(theta6), l6*cos(theta6)], \
+                [sin(theta6), cos(theta6), l6*sin(theta6)], \
+                [0, 0, 1]
+            ])
+
+
+T = T1*T2*T3*T4*T5*T6
+
+#X e Y
+x = T[2]
+y = T[5]
+
+# Coeficientes da matriz jacobiana
+a00 = diff(x, theta1)
+a01 = diff(x, theta2)
+a02 = diff(x, theta3)
+a03 = diff(x, theta4)
+a04 = diff(x, theta5)
+a05 = diff(x, theta6)
+
+a10 = diff(y, theta1)
+a11 = diff(y, theta2)
+a12 = diff(y, theta3)
+a13 = diff(y, theta4)
+a14 = diff(y, theta5)
+a15 = diff(y, theta6)
+
+print("a00 = "+str(a00))
+print("a01 = "+str(a01))
+print("a02 = "+str(a02))
+print("a03 = "+str(a03))
+print("a04 = "+str(a04))
+print("a05 = "+str(a05))
+
+print("a10 = "+str(a10))
+print("a11 = "+str(a11))
+print("a12 = "+str(a12))
+print("a13 = "+str(a13))
+print("a14 = "+str(a14))
+print("a15 = "+str(a15))
